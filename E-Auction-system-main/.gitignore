@@ -1,0 +1,26 @@
+# NetBeans
+/nbproject/private/
+/build/
+/dist/
+/.nb-gradle/
+
+# Compiled files
+*.class
+
+# IDE files
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.bak
+
+# Logs
+*.log
+
+# Local configuration
+.env
+config/db.properties

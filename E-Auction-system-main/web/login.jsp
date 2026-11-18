@@ -1,0 +1,601 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>E-Auction | Login</title>
+
+
+    <style>
+
+        /* ================= GENERAL ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+
+            background: #06152b;
+
+            overscroll-behavior: none;
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            min-height: 100dvh;
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #f4f8ff,
+                #eaf2ff
+            );
+
+            color: #0f172a;
+
+            overflow-x: hidden;
+
+            overscroll-behavior: none;
+
+        }
+
+
+        /* ================= LOGIN CARD ================= */
+
+        .login-card {
+
+            width: 420px;
+
+            background: #ffffff;
+
+            padding: 42px 45px 38px;
+
+            border-radius: 18px;
+
+            border: 1px solid #e5eaf2;
+
+            box-shadow:
+                0 15px 40px rgba(15, 23, 42, 0.12);
+
+        }
+
+
+        /* ================= HEADING ================= */
+
+        .login-card h1 {
+
+            text-align: center;
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            color: #0f172a;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 16px;
+
+            margin-bottom: 32px;
+
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-group {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #1e293b;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        /* ================= INPUT ================= */
+
+        .input-box {
+
+            position: relative;
+
+        }
+
+
+        .input-box input {
+
+            width: 100%;
+
+            height: 52px;
+
+            padding: 0 15px;
+
+            border: 1px solid #d6deea;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            color: #0f172a;
+
+            background: #ffffff;
+
+            transition: 0.2s;
+
+        }
+
+
+        .input-box input::placeholder {
+
+            color: #94a3b8;
+
+        }
+
+
+        .input-box input:focus {
+
+            border-color: #1765e8;
+
+            box-shadow:
+                0 0 0 3px rgba(23, 101, 232, 0.10);
+
+        }
+
+
+        /* ================= PASSWORD ================= */
+
+        .password-input {
+
+            padding-right: 50px !important;
+
+        }
+
+
+        .eye-button {
+
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            color: #64748b;
+
+        }
+
+
+        .eye-button:hover {
+
+            color: #1765e8;
+
+        }
+
+
+        /* ================= FORGOT PASSWORD ================= */
+
+        .forgot-row {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            margin-top: -5px;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .forgot-row a {
+
+            color: #1765e8;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .forgot-row a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .login-button {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #1765e8;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .login-button:hover {
+
+            background: #0d4bc0;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 6px 15px rgba(23, 101, 232, 0.25);
+
+        }
+
+
+        .login-button:active {
+
+            transform: translateY(0);
+
+        }
+
+
+        /* ================= REGISTER ================= */
+
+        .register-text {
+
+            text-align: center;
+
+            margin-top: 27px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid #e2e8f0;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+        }
+
+
+        .register-text a {
+
+            color: #1765e8;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+        }
+
+
+        .register-text a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 500px) {
+
+            body {
+
+                padding: 20px;
+
+            }
+
+
+            .login-card {
+
+                width: 100%;
+
+                padding: 35px 25px 30px;
+
+                border-radius: 15px;
+
+            }
+
+
+            .login-card h1 {
+
+                font-size: 28px;
+
+            }
+
+
+            .subtitle {
+
+                font-size: 15px;
+
+                margin-bottom: 27px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= LOGIN CARD ================= -->
+
+    <div class="login-card">
+
+
+        <!-- HEADING -->
+
+        <h1>
+            Welcome Back!
+        </h1>
+
+
+        <p class="subtitle">
+            Login to your account
+        </p>
+
+
+        <!-- ALERT NOTIFICATIONS -->
+        <div id="alertMessage" style="display: none; padding: 12px; border-radius: 8px; font-size: 14px; margin-bottom: 20px; text-align: center;"></div>
+
+        <!-- ================= LOGIN FORM ================= -->
+
+        <form
+            action="login"
+            method="post"
+        >
+
+
+            <!-- EMAIL / USERNAME -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="password-input"
+                        placeholder="Enter password"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="eye-button"
+                        onclick="togglePassword()"
+                        id="eyeButton"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot-row">
+
+                <a href="forgetpassword.jsp">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+                Login
+            </button>
+
+
+        </form>
+
+
+        <!-- ================= REGISTER ================= -->
+
+        <p class="register-text">
+
+            Don't have an account?
+
+            <a href="signup.jsp">
+                Register here
+            </a>
+
+        </p>
+
+
+    </div>
+
+
+    <!-- ================= PASSWORD SHOW / HIDE & STATUS ALERTS ================= -->
+
+    <script>
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            const eye =
+                document.getElementById("eyeButton");
+
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                eye.textContent = "🙈";
+
+            }
+
+            else {
+
+                password.type = "password";
+
+                eye.textContent = "👁";
+
+            }
+
+        }
+
+        // Check for URL status parameters
+        window.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const alertBox = document.getElementById("alertMessage");
+
+            if (urlParams.has("registered")) {
+                alertBox.style.display = "block";
+                alertBox.style.background = "#dcfce7";
+                alertBox.style.color = "#15803d";
+                alertBox.style.border = "1px solid #bbf7d0";
+                alertBox.textContent = "Account created successfully! Please log in.";
+            } else if (urlParams.has("reset")) {
+                alertBox.style.display = "block";
+                alertBox.style.background = "#dcfce7";
+                alertBox.style.color = "#15803d";
+                alertBox.style.border = "1px solid #bbf7d0";
+                alertBox.textContent = "Password reset successfully! Please log in with your new password.";
+            } else if (urlParams.get("error") === "invalid") {
+                alertBox.style.display = "block";
+                alertBox.style.background = "#fee2e2";
+                alertBox.style.color = "#b91c1c";
+                alertBox.style.border = "1px solid #fecaca";
+                alertBox.textContent = "Invalid email or password. Please try again.";
+            } else if (urlParams.get("error") === "unauthorized") {
+                alertBox.style.display = "block";
+                alertBox.style.background = "#fee2e2";
+                alertBox.style.color = "#b91c1c";
+                alertBox.style.border = "1px solid #fecaca";
+                alertBox.textContent = "Admin authorization required to access that area.";
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>
